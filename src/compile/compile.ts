@@ -29,7 +29,7 @@ export const compile = async (code: string): AsyncResult<CompileResponse> => {
     return Err(new Error("Failed to compile code"));
   }
 
-  const compileResponse: CompileResponse = await response.json();
+  const compileResponse: CompileResponse = await response.json() as CompileResponse;
 
   return Ok(compileResponse);
 };
