@@ -29,10 +29,12 @@
     "crypto-js": "^4.1.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "express-winston": "^4.2.0",
     "node-fetch": "^2.6.1",
     "nodemon": "^2.0.20",
     "ts-node": "^10.9.1",
     "uuid": "^8.3.2",
+    "winston": "^3.8.2",
     "ws": "^8.8.1",
     "zod": "^3.17.10"
   }
