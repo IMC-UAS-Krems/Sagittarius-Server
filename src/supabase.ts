@@ -9,6 +9,7 @@ const instance = (): Result<SupabaseClient> => {
   const supabaseKey = process.env.SUPABASE_KEY;
 
   if (!supabaseKey || !supabaseUrl) {
+    
     return Err(
       new Error("Value not found. You may be missing an environment variable.")
     );

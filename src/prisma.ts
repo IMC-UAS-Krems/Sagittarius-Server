@@ -7,7 +7,7 @@ export {
   Document,
 } from "@prisma/client";
 
-export const prismaInstance = new PrismaClient();
+export const prismaInstance = new PrismaClient({ log: ['query'] });
 // { log: ['query'] }
 
 export type Prisma = typeof prismaInstance;
