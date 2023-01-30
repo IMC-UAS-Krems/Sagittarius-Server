@@ -6,7 +6,7 @@ import appLogger from "../logger";
 
 type CompileResponse = {
   message: string;
-  output: SSD;
+  output: string;
 };
 
 export const compile = async (code: string): AsyncResult<CompileResponse> => {
