@@ -45,3 +45,8 @@ You can deploy the project using docker. It will run on port 8080.
 ```bash
 docker build -t sagittarius-server .
 ```
+
+## Copyright
+© 2022 IMC FH Krems
+
+Logos and banners courtesy of [Lily](https://lilyoko.myportfolio.com)
