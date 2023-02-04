@@ -3,7 +3,7 @@ import setupLogging from "./logger";
 import * as trpcExpress from "@trpc/server/adapters/express";
 import { appRouter } from "./trpc";
 import cors from "cors";
-
+import { createProxyMiddleware } from "http-proxy-middleware";
 
 export const run = async () => {
   const app = express();
@@ -11,6 +11,13 @@ export const run = async () => {
   const port = 8080;
 
   setupLogging(app);
+
+  const proxy = createProxyMiddleware({
+    target: "http://0.0.0.0:8796",
+    changeOrigin: true,
+  })
+
+  app.use('/api/compile', proxy);
 
   app.use(
     "/api",
