@@ -21,14 +21,14 @@ export const compile = async (code: string): AsyncResult<CompileResponse> => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json",
+      "accept": "application/json",
     },
     body: JSON.stringify({"code" : code}),
   });
 
   if (!response.ok) {
     appLogger.error(`Failed to compile code: ${response.statusText}`);
-    return Err(new Error("Failed to compile code"));
+    return Err(new Error(`Failed to compile code ${response.statusText}`));
   }
 
   const compileResponse: CompileResponse = await response.json() as CompileResponse;
