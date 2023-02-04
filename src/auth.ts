@@ -2,7 +2,6 @@ import { supabaseInstance, Supabase } from "./supabase";
 import { prismaInstance, User, Prisma } from "./prisma";
 import { Result, AsyncResult, Ok, Err } from "./utils/result";
 import { CredentialsError } from "./utils/credentialsError";
-import appLogger from "./logger";
 
 export async function logIn(
   credentials: {
@@ -13,7 +12,6 @@ export async function logIn(
   prisma: Prisma = prismaInstance
 ): AsyncResult<User> {
   if (supabase.isErr) { 
-    appLogger.error(`Failed to log in: ${supabase.error.message}`);
     return Err(supabase.error) 
   };
 
@@ -26,12 +24,10 @@ export async function logIn(
   });
 
   if (error) {
-    appLogger.error(`Failed to log in: ${error.message}`);
     return Err(new CredentialsError(error.message)) 
   };
 
   if (!user) {
-    appLogger.error(`Failed to log in: No user found`); 
     return Err(new CredentialsError("No user found")) 
   };
 
@@ -42,7 +38,6 @@ export async function logIn(
   });
 
   if (!prismaUser) {
-    appLogger.error(`Failed to log in: No user found`);
     return Err(new CredentialsError("No user found")) 
   };
 
@@ -68,17 +63,14 @@ export async function register(
   });
 
   if (error) {
-    appLogger.error(`Failed to register: ${error.message}`);
     return Err(new CredentialsError(error.message))
   };
 
   if (!user) {
-    appLogger.error(`Failed to register: No user found`);
     return Err(new CredentialsError("No user found"))
   };
 
   if (await isDuplicate(email)) {
-    appLogger.error(`Failed to register: User with email: ${email} already exists`);
     return Err(
       new CredentialsError(`User with email: ${email} already exists`)
     );
@@ -99,7 +91,6 @@ export async function logOut(
   supabase: Result<Supabase> = supabaseInstance
 ): AsyncResult<void> {
   if (supabase.isErr) {
-    appLogger.error(`Failed to log out: ${supabase.error.message}`);
     return Err(supabase.error);
   }
 
@@ -108,7 +99,6 @@ export async function logOut(
   const { error } = await db.auth.signOut();
 
   if (error) {
-    appLogger.error(`Failed to log out: ${error.message}`);
     return Err(new Error(error.message));
   }
 

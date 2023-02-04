@@ -2,7 +2,6 @@ import { AsyncResult, Ok, Err } from "../utils/result";
 import fetch from "node-fetch";
 import { SSD } from "../bindings/SSD";
 
-import appLogger from "../logger";
 
 type CompileResponse = {
   message: string;
@@ -10,10 +9,9 @@ type CompileResponse = {
 };
 
 export const compile = async (code: string): AsyncResult<CompileResponse> => {
-  const compileUrl = "http://localhost:8796/compile";
+  const compileUrl = "http://0.0.0.0:8796/compile";
 
   if (!compileUrl) {
-    appLogger.error(`No compiler URL found. Using default compiler.`);
     return Err(new Error("No compiler URL found"));
   }
 
@@ -27,7 +25,6 @@ export const compile = async (code: string): AsyncResult<CompileResponse> => {
   });
 
   if (!response.ok) {
-    appLogger.error(`Failed to compile code: ${response.statusText}`);
     return Err(new Error(`Failed to compile code ${response.statusText}`));
   }
 
