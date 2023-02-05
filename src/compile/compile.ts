@@ -9,11 +9,7 @@ type CompileResponse = {
 };
 
 export const compile = async (code: string): AsyncResult<CompileResponse> => {
-  const compileUrl = "http://0.0.0.0:8796/compile";
-
-  if (!compileUrl) {
-    return Err(new Error("No compiler URL found"));
-  }
+  const compileUrl = "https://frail-recess-production.up.railway.app/api/compile";
 
   const response = await fetch(compileUrl, {
     method: "POST",

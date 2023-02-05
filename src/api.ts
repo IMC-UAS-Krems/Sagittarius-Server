@@ -13,11 +13,11 @@ export const run = async () => {
   setupLogging(app);
 
   const proxy = createProxyMiddleware({
-    target: "http://0.0.0.0:8796",
+    target: "http://localhost:8796",
     changeOrigin: true,
   })
 
-  app.use('/api/compile', proxy);
+  app.use('/compile', proxy);
 
   app.use(
     "/api",
