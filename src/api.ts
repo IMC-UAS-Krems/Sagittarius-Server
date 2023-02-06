@@ -12,13 +12,6 @@ export const run = async () => {
 
   setupLogging(app);
 
-  const proxy = createProxyMiddleware({
-    target: "http://localhost:8796",
-    changeOrigin: true,
-  })
-
-  app.use('/compile', proxy);
-
   app.use(
     "/api",
     trpcExpress.createExpressMiddleware({
