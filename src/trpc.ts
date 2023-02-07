@@ -2,7 +2,6 @@ import * as trpc from "@trpc/server";
 import { z } from "zod";
 import { logIn, register, logOut, isDuplicate } from "./auth";
 import { compile } from "./compile/compile";
-import { prismaInstance } from "./prisma";
 
 const credentialsSchema = z.object({
   email: z.string().email({ message: "Invalid email" }),

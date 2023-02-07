@@ -1,4 +1,4 @@
-import { Ok, Err, Result } from "./utils/result";
+import { Ok, Err, Result } from "sagittarius-types/result";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import dotenv from "dotenv";
 

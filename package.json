@@ -39,6 +39,7 @@
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.1",
     "nodemon": "^2.0.20",
+    "sagittarius-types": "github:IMC-UAS-Krems/Sagittarius-Types",
     "ts-node": "^10.9.1",
     "uuid": "^8.3.2",
     "winston": "^3.8.2",

@@ -1,4 +1,4 @@
-import { AsyncResult, Ok, Err } from "../utils/result";
+import { AsyncResult, Ok, Err } from "sagittarius-types/result";
 import fetch from "node-fetch";
 import { SSD } from "../bindings/SSD";
 
