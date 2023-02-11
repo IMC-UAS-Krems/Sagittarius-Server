@@ -6,7 +6,9 @@ import cors from "cors";
 
 export const run = async () => {
   const app = express();
+
   app.use(cors());
+  
   const port = 8080;
 
   setupLogging(app);
