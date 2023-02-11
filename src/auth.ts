@@ -1,7 +1,7 @@
 import { supabaseInstance, Supabase } from "./supabase";
-import { User } from "sagittarius-types/types";
-import { prismaInstance, Prisma } from "sagittarius-types/client";
-import { Result, AsyncResult, Ok, Err } from "sagittarius-types/result";
+import { User } from "@prisma/client";
+import { prismaInstance, Prisma } from "./prisma";
+import { Result, AsyncResult, Ok, Err } from "./utils/result";
 import { CredentialsError } from "./utils/credentialsError";
 
 export async function logIn(
