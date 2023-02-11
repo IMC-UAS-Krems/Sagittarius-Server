@@ -9,7 +9,7 @@ type CompileResponse = {
 };
 
 export const compile = async (code: string): AsyncResult<CompileResponse> => {
-  const compileUrl = "https://https://sagc.up.railway.app/api/compile";
+  const compileUrl = process.env.COMPILER_URL || "http://localhost:8796/api/compile";
 
   const response = await fetch(compileUrl, {
     method: "POST",

@@ -1,5 +1,17 @@
 FROM node:19-alpine
 
+# Arguments
+ARG compiler
+ARG db
+ARG supabase
+ARG key
+
+# Environment variables
+ENV COMPILER_URL $compiler
+ENV DATABASE_URL $db
+ENV SUPABASE_URL $supabase
+ENV SUPABASE_KEY $key
+
 # Create app directory
 WORKDIR /usr/src/app
 
