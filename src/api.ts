@@ -7,7 +7,13 @@ import cors from "cors";
 export const run = async () => {
   const app = express();
 
-  app.use(cors());
+  app.use(cors(
+    {
+      origin: process.env.CLIENT_URL || "http://localhost:3000",
+      methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+      optionsSuccessStatus: 200,
+    }
+  ));
   
   const port = 8080;
 

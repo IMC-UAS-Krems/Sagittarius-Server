@@ -5,12 +5,14 @@ ARG compiler
 ARG db
 ARG supabase
 ARG key
+ARG client
 
 # Environment variables
 ENV COMPILER_URL $compiler
 ENV DATABASE_URL $db
 ENV SUPABASE_URL $supabase
 ENV SUPABASE_KEY $key
+ENV CLIENT_URL $client
 
 # Create app directory
 WORKDIR /usr/src/app
