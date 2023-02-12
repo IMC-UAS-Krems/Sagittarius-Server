@@ -1,4 +1,4 @@
-# Sagittarius Client
+# Sagittarius Server
 
 This is a server for the Sagittarius project. It is a simple server that works as a router for the compiler, authentication and cloud database services.
 
@@ -21,7 +21,7 @@ npx prisma generate
 ```bash
 git add .
 git commit -m "Your commit message"
-git push -u main main
+git push
 ```
 
 ### Propagate your changes to the main channel
@@ -30,7 +30,7 @@ cd <monorepo-directory>
 git submodule update --remote
 git add .
 git commit -m "Your commit message"
-git push -u main main
+git push
 ```
 
 ## Deploying
@@ -42,8 +42,20 @@ npm run start
 
 ### Docker
 You can deploy the project using docker. It will run on port 8080.
+
+First, expose the environment variables to the docker container.
 ```bash
-docker build -t sagittarius-server .
+source .env
+```
+
+Then, build the docker image.
+```bash
+docker build --build-arg compiler=$COMPILER_URL --build-arg db=$DATABASE_URL --build-arg supabase=$SUPABASE_URL --build-arg key=$SUPABASE_KEY --build-arg client=$CLIENT_URL -t server .
+```
+
+Finally, run the docker image.
+```bash
+docker run --publish 8080:8080 server
 ```
 
 ## Copyright
