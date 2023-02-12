@@ -9,12 +9,12 @@ export const run = async () => {
 
   app.use(cors(
     {
-      origin: process.env.CLIENT_URL || "http://localhost:3000",
+      origin: [process.env.CLIENT_URL || "http://localhost:3000", "http://localho.st:3000"],
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
       optionsSuccessStatus: 200,
     }
   ));
-  
+
   const port = 8080;
 
   setupLogging(app);
