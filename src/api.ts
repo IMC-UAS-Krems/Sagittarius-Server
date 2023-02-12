@@ -9,7 +9,7 @@ export const run = async () => {
 
   app.use(cors(
     {
-      origin: [process.env.CLIENT_URL || "http://localhost", "http://localho.st"],
+      origin: [process.env.CLIENT_URL || "http://localhost", "http://localho.st:3000"],
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
       optionsSuccessStatus: 200,
     }
